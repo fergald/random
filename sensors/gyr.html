@@ -1,0 +1,27 @@
+<script>
+  var events = [];
+  function handleEvent(event) {
+    events.push(event);
+    console.log(event, pendingResolve);
+    if (pendingResolve !== null) {
+      pendingResolve("event");
+      pendingResolve = null;
+    }
+  }
+  var gyroscope;
+  navigator.permissions.query({ name: "gyroscope" })
+  .then(result => {
+    console.log("result", result);
+    if (result.state === 'denied') {
+      console.log('Permission to use accelerometer sensor is denied.');
+    }
+    // Use the sensor.
+    gyroscope = new Gyroscope({frequency: 60});
+    gyroscope.addEventListener("reading", handleEvent);
+    gyroscope.addEventListener('error', event => {
+      console.log('Error', event);
+    });
+    console.log('start');
+    gyroscope.start();
+  })
+</script>
