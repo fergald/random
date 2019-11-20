@@ -1,5 +1,8 @@
+G
 <script>
   var events = [];
+  var pendingResolve = null;
+
   function handleEvent(event) {
     events.push(event);
     console.log(event, pendingResolve);
