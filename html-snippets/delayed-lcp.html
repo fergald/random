@@ -1,5 +1,14 @@
 <body>
-  <script>
+  <script type=module>
+    import {getCLS, getFID, getLCP} from 'https://unpkg.com/web-vitals?module';
+
+    function sendToAnalytics(metric) {
+      console.log(metric);
+    }
+
+    // getCLS(sendToAnalytics);
+    // getFID(sendToAnalytics);
+    getLCP(sendToAnalytics);
     function addSomething() {
       let d = document.createElement("div");
       document.body.appendChild(d);
