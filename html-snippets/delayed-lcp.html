@@ -1,0 +1,14 @@
+<body>
+  <script>
+    function addSomething() {
+      let d = document.createElement("div");
+      document.body.appendChild(d);
+      d.textContent = "hello";
+    }
+    let start = Date.now();
+    // Stall for 4s and then add some content.
+    while (Date.now() - 4000 < start) {
+    }
+    addSomething();
+  </script>
+</body>
