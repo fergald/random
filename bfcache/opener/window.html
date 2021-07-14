@@ -1,0 +1,38 @@
+<script>
+  var w;
+  function openIt(url) {
+    w = window.open(url)
+  }
+  function showW() {
+    console.log(w);
+    show_w.textContent = "w = " + w;
+  }
+
+  const events = [
+    "pagehide", "pageshow",
+    "unload", "load"
+  ];
+
+  const eventLogger = event => {
+    switch (event.type) {
+    case "pagehide":
+    case "pageshow":
+      let isPersisted = event.persisted ? "persisted" : "not persisted";
+      console.log('Event:', event.type, '-', isPersisted);
+      break;
+    default:
+      console.log('Event:', event.type);
+      break;
+    }
+  };
+
+  events.forEach(eventName =>
+    window.addEventListener(eventName, eventLogger)
+  );
+
+</script>
+
+<div onclick="javascript:openIt('window.html')">click to open this again</div>
+<div onclick="javascript:openIt('http://www.example.com')">click to open example.com</div>
+<div onclick="javascript:showW()">show w</div>
+<div id="show_w"></div>
