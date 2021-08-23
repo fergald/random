@@ -1,9 +1,15 @@
 <script>
+  function log(s) {
+    console.log(s);
+    let d = document.createElement("div");
+    d.innerText = s;
+    document.getElementById("log").appendChild(d);
+  }
   function install() {
     window.addEventListener('unload', function(event) {
-      console.log('unloaded.');
+      log('unloaded.');
     });
-    console.log('installed.');
+    log('installed.');
   }
   const events = [
     "pagehide", "pageshow",
@@ -15,10 +21,10 @@
     case "pagehide":
     case "pageshow":
       let isPersisted = event.persisted ? "persisted" : "not persisted";
-      console.log('Event:', event.type, '-', isPersisted);
+      log('Event: ' + event.type + ' - ' + isPersisted);
       break;
     default:
-      console.log('Event:', event.type);
+      log('Event: ' + event.type);
       break;
     }
   };
@@ -31,3 +37,5 @@
 
 <div onclick="javascript:install()">install</div>
 <a href="http://www.mdn.net/">mdn</a>
+<div>Log</div>
+<div id="log"></div>
