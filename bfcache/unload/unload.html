@@ -1,0 +1,33 @@
+<script>
+  function install() {
+    window.addEventListener('unload', function(event) {
+      console.log('unloaded.');
+    });
+    console.log('installed.');
+  }
+  const events = [
+    "pagehide", "pageshow",
+    "load"
+  ];
+
+  const eventLogger = event => {
+    switch (event.type) {
+    case "pagehide":
+    case "pageshow":
+      let isPersisted = event.persisted ? "persisted" : "not persisted";
+      console.log('Event:', event.type, '-', isPersisted);
+      break;
+    default:
+      console.log('Event:', event.type);
+      break;
+    }
+  };
+
+  events.forEach(eventName =>
+    window.addEventListener(eventName, eventLogger)
+  );
+
+</script>
+
+<div onclick="javascript:install()">install</div>
+<a href="http://www.mdn.net/">mdn</a>
