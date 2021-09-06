@@ -5,7 +5,11 @@
 <ol>
   <li>
     <input type=checkbox id="dest1Check" checked>
-    Set location to <input id="dest1" value="https://www.google.com/">
+    <ul>
+      <li><input type="radio" name="dest1Select" id="dest1Location" checked>
+        Set location to <input id="dest1" value="https://www.google.com/">
+      <li><input type="radio" name="dest1Select" id="dest1Back">Go back
+    </ul>
   <li>
     <input type=checkbox id="spinCheck" checked>
     Spin for <input id="spin" value="3.0"> seconds
@@ -35,7 +39,12 @@
   function go() {
     if (dest1Check.checked) {
       console.log("dest1");
-      setDest(dest1.value);
+      if (dest1Location.checked) {
+        setDest(dest1.value);
+      } else {
+        console.log("back");
+        history.back();
+      }
     }
     if (spinCheck.checked) {
       console.log("spin");
