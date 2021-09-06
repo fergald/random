@@ -1,6 +1,7 @@
 <div>
   See what happens when the following occurs in a single JS task.
 </div>
+<a href="#foo">Go to #foo</a>
 <ol>
   <li>
     <input type=checkbox id="dest1Check" checked>
@@ -10,7 +11,11 @@
     Spin for <input id="spin" value="3.0"> seconds
   <li>
     <input type=checkbox id="dest2Check" checked>
-    Set location to <input id="dest2" value="#foo">
+    <ul>
+      <li><input type="radio" name="dest2Select" id="dest2radio" checked>
+        Set location to <input id="dest2" value="#foo">
+      <li><input type="radio" name="dest2Select">Go back
+    </ul>
 </ol>
 <a name="foo">foo</a>
 
@@ -37,7 +42,12 @@
     }
     if (dest2Check.checked) {
       console.log("dest2");
-      setDest(dest2.value);
+      if (dest2radio.checked) {
+        setDest(dest2.value);
+      } else {
+        console.log("back");
+        history.back();
+      }
     }
   }
 </script>
