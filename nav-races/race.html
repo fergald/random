@@ -12,9 +12,10 @@
   <li>
     <input type=checkbox id="dest2Check" checked>
     <ul>
-      <li><input type="radio" name="dest2Select" id="dest2radio" checked>
+      <li><input type="radio" name="dest2Select" id="dest2Location" checked>
         Set location to <input id="dest2" value="#foo">
-      <li><input type="radio" name="dest2Select">Go back
+      <li><input type="radio" name="dest2Select" id="dest2Back">Go back
+      <li><input type="radio" name="dest2Select">window.stop()
     </ul>
 </ol>
 <a name="foo">foo</a>
@@ -42,11 +43,14 @@
     }
     if (dest2Check.checked) {
       console.log("dest2");
-      if (dest2radio.checked) {
+      if (dest2Location.checked) {
         setDest(dest2.value);
-      } else {
+      } else if (dest2Back.checked) {
         console.log("back");
         history.back();
+      } else {
+        console.log("stop");
+        window.stop();
       }
     }
   }
