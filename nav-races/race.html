@@ -1,0 +1,43 @@
+<div>
+  See what happens when the following occurs in a single JS task.
+</div>
+<ol>
+  <li>
+    <input type=checkbox id="dest1Check" checked>
+    Set location to <input id="dest1" value="https://www.google.com/">
+  <li>
+    <input type=checkbox id="spinCheck" checked>
+    Spin for <input id="spin" value="3.0"> seconds
+  <li>
+    <input type=checkbox id="dest2Check" checked>
+    Set location to <input id="dest2" value="#foo">
+</ol>
+<a name="foo">foo</a>
+
+<input type=button value="go" onclick="javascript:go()">
+
+<script>
+  function spinFor(ms) {
+    const start = Date.now();
+    while ((Date.now()-start) < ms) {
+    }
+  }
+  function setDest(dest) {
+    location.href=dest;
+    console.log("href=", dest);
+  }
+  function go() {
+    if (dest1Check.checked) {
+      console.log("dest1");
+      setDest(dest1.value);
+    }
+    if (spinCheck.checked) {
+      console.log("spin");
+      spinFor(spin.value*1000);
+    }
+    if (dest2Check.checked) {
+      console.log("dest2");
+      setDest(dest2.value);
+    }
+  }
+</script>
