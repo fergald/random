@@ -2,12 +2,13 @@
   function mouseUpDown(e) {
     mouseState.innerText = e.type;
   }
-  document.addEventListener("mousedown", mouseUpDown);
-  document.addEventListener("mouseup", mouseUpDown);
+  window.addEventListener("mousedown", mouseUpDown);
+  window.addEventListener("mouseup", mouseUpDown);
   function pageShow(e) {
+    console.log("pageshow");
     pageShowPersisted.innerText = e.persisted;
   }
-  document.addEventListener("pageshow", pageShow);
+  window.addEventListener("pageshow", pageShow);
 
   function navigate(e) {
     setTimeout(function () {document.location="about:blank"}, 1000);
