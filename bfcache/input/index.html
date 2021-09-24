@@ -1,0 +1,10 @@
+<body>
+  <div>I think the mouse button is <span id=mouseState>???</span></div>
+</body>
+<script>
+  function mouseUpDown(e) {
+    mouseState.innerText = e.type;
+  }
+  document.addEventListener("mousedown", mouseUpDown);
+  document.addEventListener("mouseup", mouseUpDown);
+</script>
