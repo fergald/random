@@ -1,10 +1,28 @@
-<body>
-  <div>I think the mouse button is <span id=mouseState>???</span></div>
-</body>
 <script>
   function mouseUpDown(e) {
     mouseState.innerText = e.type;
   }
   document.addEventListener("mousedown", mouseUpDown);
   document.addEventListener("mouseup", mouseUpDown);
+  function pageShow(e) {
+    pageShowPersisted.innerText = e.persisted;
+  }
+  document.addEventListener("pageshow", pageShow);
+
+  function navigate(e) {
+    setTimeout(function () {document.location="about:blank"}, 1000);
+  }
 </script>
+<body>
+  <div>Demonstration of BFCache's interaction with input states</div>
+  <div>Click the link below and hold down the mouse button, it will
+  navigate in 3s. Then navigate back.</div>
+  <div></div>
+  <div>Page was persisted?
+    <span style="font-weight: bold" id="pageShowPersisted">false</span>
+  </div>
+  <div>I think the mouse button is
+    <span style="font-weight: bold" id="mouseState">???</span>
+  </div>
+  <div onmousedown="javascript:navigate()">Mousedown on me to navigate away after 1 second</div>
+</body>
