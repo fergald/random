@@ -1,0 +1,9 @@
+<pre id="vis">nothing</pre>
+<script>
+  function change(e) {
+    console.log(e);
+    console.log(document.visibilityState);
+    vis.textContent += "\n" + document.visibilityState;
+  }
+  window.addEventListener("visibilitychange", change);
+</script>
