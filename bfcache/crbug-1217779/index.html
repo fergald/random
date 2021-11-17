@@ -1,8 +1,9 @@
+<pre id=p></pre>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOMContentLoaded");
+    p.innerText += "DOMContentLoaded\n";
   });
   window.addEventListener('pageshow', function(e) {
-    console.log("pageshow", e.persisted);
+    p.innerText += "pageshow,persisted=" + e.persisted + "\n";
   });
 </script>
