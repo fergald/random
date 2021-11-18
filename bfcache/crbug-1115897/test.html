@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://t04.m.naver.com/test.html -->
+<html lang="ko" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<style>
+
+html, body {
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+}
+
+.tab-nav {
+	height: 50px;
+	width: 100%;
+}
+.tab-nav a {
+	width: 40%;
+	border: 2px solid #888;
+	display: inline-block;
+}
+.tab {
+	height: 500px;
+	display: block;
+}
+.tab-1 {
+	background-color: #ffff00;
+}
+.tab-2 {
+	background-color: #ff00ff;
+}
+
+	
+</style>
+</head>
+<body>
+	<div class="tab-nav">
+		<a id="tab-nav-1" href="https://t04.m.naver.com/test.html#">TAB1</a>
+		<a id="tab-nav-2" href="https://t04.m.naver.com/test.html#">TAB2</a>
+	</div>
+	<div class="tab tab-1">
+		<a href="https://blog.google/" target="_blank">
+			BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG BLOG
+		</a>
+	</div>
+	<div class="tab tab-2" style="display: none;">
+		<a href="https://google.com/" target="_blank">Google</a>
+	</div>
+	<script>
+		document.getElementById('tab-nav-1').addEventListener('click', (evt) => {
+			evt.preventDefault();
+			document.querySelectorAll('.tab').forEach((el) =>{
+				el.style.display = 'none';
+			});
+			document.querySelector('.tab-1').style.display = 'block';
+		});
+		document.getElementById('tab-nav-2').addEventListener('click', (evt) => {
+			evt.preventDefault();
+			document.querySelectorAll('.tab').forEach((el) =>{
+				el.style.display = 'none';
+			});
+			document.querySelector('.tab-2').style.display = 'block';
+		});
+	</script>
+
+
+
+</body></html>
