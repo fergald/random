@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .pages {
+    flex-basis: content;
+  }
+  .text {
+    overflow-y: scroll;
+    flex-grow: 1;
+  }
+  #outer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  </style>
+  <title></title>
+  <script>
+    window.onload = () => {
+      console.log("outer's height =", window.getComputedStyle(outer).height);
+      console.log("viewport's height =", visualViewport.height);
+    };
+  </script>
+</head>
+<body>
+  <div id="outer">
+    <div class="pages">
+      Why do we get a scrollbar on the document when the height of the
+      outermost element is set to <code>100vh</code>? In the console
+      log, you can see that the viewport's height and the element's
+      height match but the reality is that the element is a few pixels
+      taller than the viewport.
+    </div>
+    <div class="text">
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+        <p>blah blah blah blah blah blah blah blah</p>
+    </div>
+  </div>
+</body>
+</html>
