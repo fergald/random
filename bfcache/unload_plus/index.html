@@ -1,0 +1,18 @@
+<div>This page cannot be cached because it uses SpeechSynthesis.</div>
+
+<div onclick="installUnload()"><b>click here to also add an unload handler</b></div>
+
+
+
+<script>
+  function installUnload() {
+    window.addEventListener('unload', function(event) {
+    });
+    console.log("installed");
+  }
+
+  var synth = window.speechSynthesis;
+  console.log(synth.getVoices());
+  var msg = new SpeechSynthesisUtterance('Hello World');
+  window.speechSynthesis.speak(msg);
+</script>
