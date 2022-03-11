@@ -16,7 +16,7 @@ class AlignElement extends HTMLElement {
           text-align: right;
         }
         .container {
-          width: 100%;
+          width: var(--customElementWidth);
           border: 1px solid;
         }
         </style>
