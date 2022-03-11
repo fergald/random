@@ -14,8 +14,8 @@ class AlignElement extends HTMLElement {
         }
       </style>
       <div style="width: 100%">
-        <div class=left>left</div>
-        <div class=right>right</div>
+        <div class=left>Left-aligned</div>
+        <div class=right>Right-aligned</div>
       </div>
     `;
     }
