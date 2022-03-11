@@ -13,10 +13,11 @@ class AlignElement extends HTMLElement {
           text-align: right;
         }
         .container {
+          width: 100%;
           border: 1px solid;
         }
         </style>
-      <div class=container style="width: 100%">
+      <div class=container>
         <div class=left>Aligned left.</div>
         <div class=right>Aligned right.</div>
       </div>
