@@ -1,0 +1,14 @@
+<div id=d></div>
+<script>
+  function log(m) {
+    console.log(m);
+    const d = document.getElementById('d');
+    const c = document.createElement('div');
+    d.appendChild(c);
+    c.innerText = m;
+  }
+  window.addEventListener('pageshow', function(event) {
+    log(`pageshow.persisted=${event.persisted}`);
+    log(`nav_type=${performance.getEntriesByType('navigation')[0].type}`);
+  });
+</script>
