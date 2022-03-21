@@ -1,10 +1,26 @@
-<script src="align-element.js"></script>
+<script src="align-element-100.js"></script>
+<script src="align-element-400.js"></script>
+<script src="align-element-custom.js"></script>
 <style>
+  .outer {
+      width: 500px;
+      --customElementWidth: 500px;
+  }
   .wrapper {
-    width: 500px;
+      width: auto;
   }
 </style>
+<div class=outer>
 <div class=wrapper>
-  <align-element>
-  </align-element>
+  <align-element-100>
+  </align-element-100>
+</div>
+<div class=wrapper>
+  <align-element-400>
+  </align-element-400>
+</div>
+<div class=wrapper>
+  <align-element-custom>
+  </align-element-custom>
+</div>
 </div>
