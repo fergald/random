@@ -1,4 +1,4 @@
-class AlignElement extends HTMLElement {
+class AlignElementFix extends HTMLElement {
   selector = null;
   styleSheet = null;
 
@@ -66,4 +66,4 @@ class AlignElement extends HTMLElement {
     }
   }
 }
-window.customElements.define('align-element', AlignElement);
+window.customElements.define('align-element-fix', AlignElementFix);

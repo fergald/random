@@ -1,4 +1,4 @@
-class AlignElement extends HTMLElement {
+class AlignElement400 extends HTMLElement {
   constructor() {
     super();
 
@@ -25,4 +25,4 @@ class AlignElement extends HTMLElement {
     }
   }
 }
-window.customElements.define('align-element-400', AlignElement);
+window.customElements.define('align-element-400', AlignElement400);
