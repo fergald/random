@@ -13,7 +13,7 @@ class AlignElement extends HTMLElement {
           text-align: right;
         }
         .container {
-          width: 100%;
+          width: 400%;
           border: 1px solid;
         }
         </style>
@@ -25,4 +25,4 @@ class AlignElement extends HTMLElement {
     }
   }
 }
-window.customElements.define('align-element', AlignElement);
+window.customElements.define('align-element-400', AlignElement);
