@@ -1,0 +1,16 @@
+<div id=sendMsg>click to send <span id=msgNumSpan><span></div>
+<script>
+  var bc = new BroadcastChannel("bfcacheTest");
+  var msgNum = 1;
+  function update() {
+    msgNumSpan.textContent = msgNum;
+  }
+  console.log("here");
+  update();
+  sendMsg.onclick = () => {
+    console.log("here");
+    bc.postMessage(msgNum++);
+    update();
+  }
+
+</script>
