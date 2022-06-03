@@ -1,5 +1,10 @@
+Receives data on the BC
 <script>
-  var bc = new BroadcastChannel("name");
+  var bc = new BroadcastChannel("bfcacheTest");
+  bc.onmessage = (event) => {
+    console.log(event);
+    bcMessages.textContent += "\n" + event.data
+  };
   window.addEventListener('pageshow', (event) => {
     bf.textContent = event.persisted ? "persisted" : "not persisted";
   });
@@ -7,3 +12,7 @@
 </script>
 <div id=bf></div>
 <a href="https://en.wikipedia.org/wiki/Main_Page">https://en.wikipedia.org/wiki/Main_Page</a>
+<a href=send.html>send.html</a>
+<div id=bf></div>
+<div>messages received</div>
+<pre id=bcMessages></pre>
