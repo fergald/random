@@ -1,0 +1,15 @@
+<div id=num>
+</div>
+<div onclick="goBack()">go back</div>
+
+<script>
+  const value = (localStorage.getItem("k") || "");
+  num.textContent = value.length;
+
+  function goBack() {
+    history.back();
+    setTimeout(() => {
+      localStorage.setItem("k", value+"x");
+    }, 0);
+  }
+</script>
