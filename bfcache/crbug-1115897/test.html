@@ -49,6 +49,8 @@ html, body {
     <br>
 		<span id='window-span'>Window</span>
     <br>
+		<span id='recalc-span'>Recalc+Window</span>
+    <br>
 		<span id='style-span'>Style</span>
 	</div>
 	<script>
@@ -86,6 +88,13 @@ html, body {
       console.log(evt);
       changeSpan();
       console.log(window.getComputedStyle(windowSpan));
+    });
+    let recalcSpan = document.getElementById('recalc-span');
+    recalcSpan.addEventListener('click', (evt) => {
+      console.log(evt);
+      changeSpan();
+      console.log(window.getComputedStyle(windowSpan));
+      window.open("", "_blank");
     });
 	</script>
 
