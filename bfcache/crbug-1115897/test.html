@@ -31,7 +31,7 @@ html, body {
 	background-color: #ff00ff;
 }
 
-	
+
 </style>
 </head>
 <body>
@@ -45,7 +45,7 @@ html, body {
 		</a>
 	</div>
 	<div class="tab tab-2" style="display: none;">
-		<a href="https://google.com/" target="_blank">Google</a>
+		<a id='google-link' href="https://google.com/" target="_blank">Google</a>
 	</div>
 	<script>
 		document.getElementById('tab-nav-1').addEventListener('click', (evt) => {
@@ -62,6 +62,9 @@ html, body {
 			});
 			document.querySelector('.tab-2').style.display = 'block';
 		});
+		document.getElementById('google-link').addEventListener('click', (evt) => {
+      console.log(evt);
+    });
 	</script>
 
 
