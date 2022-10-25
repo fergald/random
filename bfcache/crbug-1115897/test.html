@@ -71,7 +71,7 @@ html, body {
     let windowSpan = document.getElementById('window-span');
     windowSpan.addEventListener('click', (evt) => {
       console.log(evt);
-      window.open("", "_blank");
+      window.open();
     });
 		document.getElementById('google-link').addEventListener('click', (evt) => {
       console.log(evt);
@@ -94,7 +94,7 @@ html, body {
       console.log(evt);
       changeSpan();
       console.log(window.getComputedStyle(windowSpan));
-      window.open("", "_blank");
+      window.open();
     });
 	</script>
 
