@@ -47,7 +47,9 @@ html, body {
 	<div class="tab tab-2" style="display: none;">
 		<a id='google-link' href="https://google.com/" target="_blank">Google</a>
     <br>
-		<span id='google-span'>Google</a>
+		<span id='window-span'>Window</span>
+    <br>
+		<span id='style-span'>Style</span>
 	</div>
 	<script>
 		document.getElementById('tab-nav-1').addEventListener('click', (evt) => {
@@ -64,24 +66,26 @@ html, body {
 			});
 			document.querySelector('.tab-2').style.display = 'block';
 		});
-    let googleSpan = document.getElementById('google-span');
-    function changeSpan() {
-      if (googleSpan.getAttribute("style") != "color: red") {
-        googleSpan.setAttribute("style", "color: red");
-      } else {
-        googleSpan.setAttribute("style", "color: green");
-      }
-    }
-    googleSpan.addEventListener('click', (evt) => {
+    let windowSpan = document.getElementById('window-span');
+    windowSpan.addEventListener('click', (evt) => {
       console.log(evt);
-      window.open("https://google.com/", "_blank");
-      changeSpan();
-      console.log(window.getComputedStyle(googleSpan));
+      window.open("", "_blank");
     });
 		document.getElementById('google-link').addEventListener('click', (evt) => {
       console.log(evt);
+    });
+    let styleSpan = document.getElementById('style-span');
+    function changeSpan() {
+      if (styleSpan.getAttribute("style") != "color: red") {
+        styleSpan.setAttribute("style", "color: red");
+      } else {
+        styleSpan.setAttribute("style", "color: green");
+      }
+    }
+    styleSpan.addEventListener('click', (evt) => {
+      console.log(evt);
       changeSpan();
-      console.log(window.getComputedStyle(googleSpan));
+      console.log(window.getComputedStyle(windowSpan));
     });
 	</script>
 
