@@ -1,0 +1,32 @@
+<body>
+  <input type="submit" value="+1" onClick="javascript:more()" /> <- Click me!<br />
+</body>
+<style>
+  * { font-weight: 700; } 
+  :first-of-type { font-weight: 200; }
+</style>
+<script>
+  function elem(name) {
+    return document.body.appendChild(document.createElement(name));
+  }
+
+  var i = 1;
+  // Add a new number to the body.
+  function more() {
+    var span = elem("span");
+    span.innerText = i + " ";
+    // If it's bold it must be a prime, so make all of its following
+    // multiples non-bold.
+    if (window.getComputedStyle(span, "").fontWeight == 700) {
+      // This uses a trick to ensure we don't gray out the prime
+      // itself. in+2*i skips 0, i and starts with 2*i (e.g. 3n+6 skips
+      // 0, 3 and starts at 6).
+    elem("style").innerHTML =
+      ":nth-of-type("+i+"n + "+2*i+"){font-weight: 200}";
+    }
+    i++;
+  }
+
+  // Add 1-1000.
+  for (var j=0; j < 1000; j++) more();
+</script>
