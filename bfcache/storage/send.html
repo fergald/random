@@ -4,17 +4,16 @@ Sends data on the BC.
   </button>
 </div>
 <script>
-  let msgNum = 0;
+  let msgNum = 1;
   function update() {
     msgNumSpan.textContent = msgNum;
   }
   console.log("here");
   update();
   sendMsg.onclick = () => {
-    console.log("here");
+    console.log("sending", msgNum);
     localStorage.setItem("key", msgNum);
     msgNum++;
     update();
   }
-
 </script>

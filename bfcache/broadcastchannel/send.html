@@ -4,17 +4,16 @@ Sends data on the BC.
   </button>
 </div>
 <script>
-  var bc = new BroadcastChannel("bfcacheTest");
-  var msgNum = 1;
+  let msgNum = 1;
+  let bc = new BroadcastChannel("bfcacheTest");
   function update() {
     msgNumSpan.textContent = msgNum;
   }
   console.log("here");
   update();
   sendMsg.onclick = () => {
-    console.log("here");
+    console.log("sending", msgNum);
     bc.postMessage(msgNum++);
     update();
   }
-
 </script>
