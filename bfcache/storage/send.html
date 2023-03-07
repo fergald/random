@@ -1,0 +1,20 @@
+Sends data on the BC.
+<div id=sendMsg>
+  <button>click to send trigger storage event <span id=msgNumSpan><span>
+  </button>
+</div>
+<script>
+  let msgNum = 0;
+  function update() {
+    msgNumSpan.textContent = msgNum;
+  }
+  console.log("here");
+  update();
+  sendMsg.onclick = () => {
+    console.log("here");
+    localStorage.setItem("key", msgNum);
+    msgNum++;
+    update();
+  }
+
+</script>
