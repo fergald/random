@@ -9,6 +9,16 @@
     pageShowPersisted.innerText = e.persisted;
   }
   window.addEventListener("pageshow", pageShow);
+  function pageHide(e) {
+    console.log("pagehide");
+  }
+  window.addEventListener("pagehide", pageHide);
+
+  function move(e) {
+    console.log("move", e);
+  }
+  window.addEventListener("mousemove", move);
+  window.addEventListener("pointermove", move);
 
   function navigate(e) {
     setTimeout(function () {document.location="about:blank"}, 1000);
