@@ -1,0 +1,13 @@
+<script>
+  const PAGEHIDE = "pagehide";
+  const UNLOAD = "unload";
+  function makeF(name) {
+    return () => {
+      localStorage.setItem(name, Number.parseInt(localStorage.getItem(name) || 0) + 1)
+      console.log(name);
+    };
+  }
+  window.addEventListener(UNLOAD, makeF(UNLOAD));
+  window.addEventListener("pagehide", makeF(PAGEHIDE));
+</script>
+<a href="about:blank">away</a>

@@ -1,0 +1,15 @@
+<iframe src=if.html></iframe>
+<div id=unload></div>
+<div id=pagehide></div>
+<script>
+  const PAGEHIDE = "pagehide";
+  const UNLOAD = "unload";
+  function showCount(name) {
+    let count = localStorage.getItem(name);
+    console.log(name, count);
+    document.getElementById(name).textContent = `${name} = ${count}`;
+    localStorage.setItem(name, 0);
+  }
+  showCount(UNLOAD);
+  showCount(PAGEHIDE);
+</script>
