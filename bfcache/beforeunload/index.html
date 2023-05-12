@@ -1,0 +1,12 @@
+<p>beforeunload handler blocks BFCache?</p>
+<p><a href="https://github.com/">Navigate away</a></p>
+<script>
+  function addListener() {
+    addEventListener("beforeunload",
+                     (event) => {
+                       event.preventDefault();
+                     });
+  }
+</script>
+<script src="../show_persisted.js"></script>
+<button onclick="javascript:addListener()">Install listener</button>
