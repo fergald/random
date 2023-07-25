@@ -1,0 +1,11 @@
+<div id="d">d</div>
+<script>
+  const key = "key";
+  function go() {
+    const socketB = new WebSocket("ws://www.google.com/");
+    addEventListener('open', () => localStorage.setItem(key, new Date().toDateString));
+    location = "about::blank";
+  }
+  d.innerText = localStorage.getItem(key)
+</script>
+<div onclick="javascript:go()">go</div>
