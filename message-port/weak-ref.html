@@ -1,3 +1,19 @@
+<div>Demostrates that that WeakRefs already expose whether the receiving iframe has been destroyed. Try
+  <ol>
+    <li>log</li>
+    <li>sendPort1</li>
+    <li>delete iframe</li>
+    <li>force a garbage collection in devtools</li>
+    <li>log</li>
+  </ol>
+  You'll see that the weak refs are now empty.
+</div>
+
+<button id="logButton">log</button>
+<button id="clearButton">clear</button>
+<button id="closePort1">close port1</button>
+<button id="closePort2">close port2</button>
+<button id="sendPort1">send port1</button>
 <div id="content">
 </div>
 <script src="weak-ref.js"></script>
