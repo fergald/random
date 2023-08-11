@@ -1,9 +1,12 @@
 function setup() {
+  const x = new MessageChannel();
   let channel = new WeakRef(new MessageChannel());
   let port1 = new WeakRef(channel.deref().port1);
   let port2 = new WeakRef(channel.deref().port2);
-  //channel.deref().port1.close();
-  //channel.deref().port2.close();
+
+  // Send 1 message.
+  channel.deref().port2.onmessage = console.log;
+  port1.deref().postMessage("asdf");
 
   const logFunction = () => {
     document.getElementById("content").textContent = `port1: ${port1.deref()} port2: ${port2.deref()} channel: ${channel ? channel.deref() : "null"}`;
