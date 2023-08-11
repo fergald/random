@@ -1,12 +1,13 @@
-<div>Demostrates that that WeakRefs already expose whether the receiving iframe has been destroyed. Try
+<div>Demostrates that that `WeakRefs` with `MessagePort` already expose whether a cross-origin iframe has been
+  destroyed. Try
   <ol>
-    <li>log</li>
-    <li>sendPort1</li>
-    <li>delete iframe</li>
+    <li>click log</li>
+    <li>click sendPort1</li>
+    <li>click delete iframe</li>
     <li>force a garbage collection in devtools</li>
-    <li>log</li>
+    <li>click log</li>
   </ol>
-  You'll see that the weak refs are now empty.
+  You'll see that the weak refs become null.
 </div>
 
 <button id="logButton">log</button>
