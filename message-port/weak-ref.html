@@ -2,8 +2,19 @@
   destroyed. Try
   <ol>
     <li>click log</li>
-    <li>click sendPort1</li>
-    <li>click delete iframe</li>
+    <li>Choose one of</li>
+    <ol type="a">
+      <li>cross-origin</li>
+      <ol type="i">
+        <li>click sendPort1 cross-origin</li>
+        <li>click delete iframe</li>
+      </ol>
+      <li>same-origin</li>
+      <ol type="i">
+        <li>click sendPort1 same-origin</li>
+        <li>click drop reference</li>
+      </ol>
+      </ol>
     <li>force a garbage collection in devtools</li>
     <li>click log</li>
   </ol>
@@ -14,7 +25,10 @@
 <button id="clearButton">clear</button>
 <button id="closePort1">close port1</button>
 <button id="closePort2">close port2</button>
-<button id="sendPort1">send port1</button>
+<button id="sendPort1Cross">send port1 cross-origin</button>
+<button disabled id="deleteIframe">delete iframe</button>
+<button id="sendPort1Same">send port1 same-origin</button>
+<button disabled id="dropReference">drop reference</button>
 <div id="content">
 </div>
 <script src="weak-ref.js"></script>
