@@ -18,3 +18,43 @@ let count = 0;
 setInterval(() => {
   logIt("interval", count++);
 }, 30 * 1000)
+
+
+function fetchLater(url, limitMs) {
+  const finalTime = Date.now() + limitMs;
+  const timeLeft = () => {
+    return finalTime - Date.now();
+  }
+  let abortController = new AbortController();
+  let fetchResult = fetchLater(url, { signal: abortController.signal });
+
+  const pagehideHandler = e => {
+    if (!e.persisted) {
+      // Not going into BFCache.
+      return;
+    }
+    if (fetchResult.activated) {
+      // It was already sent.
+      removeEventListener("pagehide", pagehideHandler);
+      return;
+    }
+    abortController.abort();
+    abortController = new AbortController();
+    fetchResult = fetchLater(url, {
+      signal: abortController,
+      backgroundTimeout: timeLeft()
+    });
+  }
+  addEventListener("pagehide", pagehideHandler);
+
+  // Send it on time.
+  setTimeout(() => {
+    removeEventListener("pagehide", pagehideHandler);
+    if (fetchResult.activated) {
+      // It was already sent.
+      return;
+    }
+    abortController.abort();
+    fetch(url);
+  }, timeLeft());
+}

@@ -5,7 +5,7 @@ function setup() {
   let port2 = new WeakRef(channel.deref().port2);
 
   // Send 1 message.
-  channel.deref().port2.onmessage = console.log;
+  channel.deref().port2.onmessage = (e) => {console.log(`receieved message: ${e.data}`)};
   port1.deref().postMessage("asdf");
 
   const logFunction = () => {
