@@ -1,0 +1,15 @@
+<p>This creates a pagehide handler with an infinite loop.
+<script>
+  localStorage.setItem("hello", "main");
+  addEventListener("pagehide", () => {
+    localStorage.setItem("hello", "pagehide");
+    let a = 0;
+    while (1) {
+      a++;
+      //console.log("bad");
+    }
+  });
+</script>
+<p>Navigate away
+<a href="https://www.google.com/">google</a>
+<a href="good.html">same-site</a>
