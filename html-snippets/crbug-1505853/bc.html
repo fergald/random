@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<script>
+  console.log("localStorage.bc", localStorage.bc);
+  let bc = new BroadcastChannel('TESTING');
+  localStorage.bc = "open"
+
+  const onPageHide = (e) => {
+    console.log('pagehide', e.persisted);
+    if (bc) {
+      console.log('closing channel.');
+      localStorage.bc = "closing";
+      console.log("localStorage.bc", localStorage.bc);
+      bc.close();
+      localStorage.bc = "closed";
+      console.log("localStorage.bc", localStorage.bc);
+      let t = bc;
+      bc = null;
+      localStorage.bc = "closed, trying to post";
+      console.log("localStorage.bc", localStorage.bc);
+      t.postMessage("foo");
+      localStorage.bc = "posted on closed";
+      console.log("localStorage.bc", localStorage.bc);
+    } else {
+      console.log('no channel.');
+      localStorage.bc = "no bc"
+    }
+  };
+
+  const onPageShow = (e) => {
+    console.log('pageshow', e.persisted);
+    console.log("localStorage.bc", localStorage.bc);
+    console.log("bc", bc);
+    if (!bc) {
+      console.log('resetting channel');
+      bc = new BroadcastChannel('TESTING');
+      localStorage.bc = "open"
+    }
+
+    document.getElementById('cache-result').innerText = e.persisted;
+  };
+
+  window.addEventListener('pageshow', onPageShow);
+
+  window.addEventListener('pagehide', onPageHide);
+</script>
+
+<html>
+    <body>
+        <span>Loaded from cache: </span><span id="cache-result"></span>
+    </body>
+</html>
