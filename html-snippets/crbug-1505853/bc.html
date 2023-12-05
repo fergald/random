@@ -17,7 +17,12 @@
       bc = null;
       localStorage.bc = "closed, trying to post";
       console.log("localStorage.bc", localStorage.bc);
-      t.postMessage("foo");
+      try {
+        t.postMessage("foo");
+      } catch (e) {
+        localStorage.bc = `exception: ${e}`;
+        throw e;
+      }
       localStorage.bc = "posted on closed";
       console.log("localStorage.bc", localStorage.bc);
     } else {
