@@ -1,3 +1,4 @@
+var w;
 let { port1, port2 } = new MessageChannel();
 const port1_weak = new WeakRef(port1);
 port1.start();

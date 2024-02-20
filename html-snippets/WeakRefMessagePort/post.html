@@ -1,6 +1,15 @@
 <script src="post.js"></script>
 <script src="force-gc.js"></script>
-<div>The MessagePort WeakRef should be kept alive by the opened window. The array WeakRef can be lost by forcing GC.
+<div>
+  The MessagePort WeakRef should be kept alive
+  by the opened window.
+  The array WeakRef should be lost when GC occurs.
+  <ul>
+    <li>On WebKit GC seems to occur quite quickly and spontaneously.</li>
+    <li>On Chrome it must be forced.</li>
+    <li>On Firefox even after GC occurs and the receiving window is closed, the port is not GCed.</li>
+  </ul>
+
 </div>
 <button onclick="sendPort()">Open window and send port</button>
 <pre id="message"></pre>
