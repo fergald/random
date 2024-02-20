@@ -1,5 +1,7 @@
 <script src="post.js"></script>
 <script src="force-gc.js"></script>
+<div>The MessagePort WeakRef should be kept alive by the opened window. The array WeakRef can be lost by forcing GC.
+</div>
 <button onclick="sendPort()">Open window and send port</button>
-<div id="message"></div>
-<button onclick="forceGc()">Force GC</button>
+<pre id="message"></pre>
+<button onclick="forceGc()">Force GC by allocating and freeing lots of memory.</button>
