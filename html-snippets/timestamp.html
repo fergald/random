@@ -1,4 +1,15 @@
-<p>Timestamp</p>
+<p id=timestamp>Timestamp</p>
+<p>I was in BFCache for <span id=duration>0<span> seconds</p>
 <script>
-  document.getElementsByTagName("p")[0].textContent = new Date();
+  let hideTime;
+  document.getElementById("timestamp").textContent = new Date();
+  window.addEventListener("pagehide", e => {
+      hideTime = Date.now();
+  });
+  window.addEventListener("pageshow", e => {
+      if (e.persisted) {
+          const duration = Date.now() - hideTime;
+	  document.getElementById("duration").textContent = duration / 1000;
+      }
+  });
 </script>
