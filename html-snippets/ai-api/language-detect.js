@@ -32,9 +32,14 @@ goButton.onclick = async () => {
     let input = promptArea.value;
     input = input.trim();
     console.log(`Input: ${input}`);
+    const startMs = Date.now();
     const output = await detector.detect(input);
+    const endMs = Date.now();
+    const durationMs = endMs - startMs;
+    const durationPerMs = durationMs / input.length * 100;
     console.log(output);
-    response.textContent = `${output.detectedLanguage}: ${Math.floor(output.confidence * 100)}%`;
+    response.textContent = `${output.detectedLanguage}: ${Math.floor(output.confidence * 100)}%.
+     ${input.length} characters. Took ${durationMs}ms, ${durationPerMs}ms per 100 characters`;
   } finally {
     able(goButton, true);
   }
