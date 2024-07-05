@@ -29,10 +29,10 @@ goButton.onclick = async () => {
   able(goButton, false);
   try {
     const session = await ai.createTextSession();
-    let prompt = promptArea.textContent;
-    prompt = prompt.trim();
-    console.log(`Prompt: ${prompt}`);
-    const output = await session.promptStreaming(promptArea.textContent);
+    let input = promptArea.value;
+    input = input.trim();
+    console.log(`Input: ${input}`);
+    const output = await session.promptStreaming(input);
     const reader = output.getReader();
     while (true) {
       const next = await reader.read();
