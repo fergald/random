@@ -44,3 +44,11 @@ goButton.onclick = async () => {
     able(goButton, true);
   }
 };
+
+let hamletText;
+hamletButton.onclick = async () => {
+  if (!hamletText) {
+    hamletText = await fetch("hamlet.txt").then(r => r.text());
+  }
+  promptArea.value = hamletText.substr(0, charsInput.value);
+}
