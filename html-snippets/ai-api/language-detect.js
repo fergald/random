@@ -12,8 +12,8 @@ function setStatus(status) {
 }
 
 async function init() {
-  if (!window.ai) {
-    setStatus("No window.ai");
+  if (!window.translation) {
+    setStatus("No window.translation");
     return;
   }
 
