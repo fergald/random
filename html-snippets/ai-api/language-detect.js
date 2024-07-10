@@ -26,18 +26,31 @@ async function init() {
 
 init();
 
+function el(name, textContent) {
+  const el = document.createElement(name);
+  el.textContent = textContent;
+  return el;
+}
+
 async function detect(input) {
   const detector = await translation.createDetector();
   input = input.trim();
   console.log(`Input: ${input}`);
   const startMs = Date.now();
-  const output = await detector.detect(input);
+  const output = await detector.detect(input, false);
   const endMs = Date.now();
   const durationMs = endMs - startMs;
   const charsPerMs = input.length / durationMs;
   console.log(output);
-  response.textContent = `${output.detectedLanguage}: ${Math.floor(output.confidence * 100)}%.
-   ${input.length} characters. Took ${durationMs}ms, ${charsPerMs} characters per ms`;
+  response.innerHTML = "";
+  response.append(el("div"), `${input.length} characters. Took ${durationMs}ms, ${charsPerMs} characters per ms`);
+  output.sort((a, b) => b.confidence - a.confidence);
+  for (const result of output) {
+    if (result.confidence < .01) {
+      continue;
+    }
+    response.append(el("div", `${result.detectedLanguage}: ${Math.floor(result.confidence * 100)}%.`));
+  }
 }
 
 goButton.onclick = async () => {
