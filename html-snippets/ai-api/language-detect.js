@@ -46,10 +46,11 @@ async function detect(input) {
   response.append(el("div"), `${input.length} characters. Took ${durationMs}ms, ${charsPerMs} characters per ms`);
   output.sort((a, b) => b.confidence - a.confidence);
   for (const result of output) {
+    const d = el("div", `${result.detectedLanguage}: ${Math.floor(result.confidence * 100)}%.`);
     if (result.confidence < .01) {
-      continue;
+      d.style = "color: grey;";
     }
-    response.append(el("div", `${result.detectedLanguage}: ${Math.floor(result.confidence * 100)}%.`));
+    response.append(d);
   }
 }
 
