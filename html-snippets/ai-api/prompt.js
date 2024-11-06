@@ -11,16 +11,24 @@ function setStatus(status) {
   return document.getElementById("status").textContent = status;
 }
 
+function llm() {
+  return window.ai.assistant;
+}
+
 async function init() {
   if (!window.ai) {
     setStatus("No window.ai");
     return;
   }
+  setStatus("Has window.ai");
 
-  const can = await ai.canCreateTextSession();
-  setStatus(`canCreateTextSession returned: ${can}`);
+  const cap = await llm().capabilities();
+  setStatus(`capability: ${cap.available}`);
+  if (cap.available == "no") {
+    return;
+  }
 
-  able(goButton, can != "no");
+  able(goButton, cap.available != "no");
 };
 
 init();
@@ -28,7 +36,7 @@ init();
 goButton.onclick = async () => {
   able(goButton, false);
   try {
-    const session = await ai.createTextSession();
+    const session = await llm().create();
     let input = promptArea.value;
     input = input.trim();
     console.log(`Input: ${input}`);
