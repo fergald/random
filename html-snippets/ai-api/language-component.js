@@ -6,7 +6,7 @@ class TranslateText extends HTMLElement {
     super();
   }
 
-  async connectedCallback() {
+  async doTranslate() {
 
     console.log(this.innerText);
     //		this.sourceLanguage = 'en';
@@ -29,7 +29,7 @@ class TranslateText extends HTMLElement {
 
     let detector = await window.translation.createDetector();
     console.log(detector);
-    console.log('calling detect...');
+    console.log('calling detect on ', this.innerText);
     let results = await detector.detect(this.innerText);
     console.log('Result from detector', results);
 
@@ -61,3 +61,8 @@ class TranslateText extends HTMLElement {
 }
 
 if (!customElements.get('translate-text')) customElements.define('translate-text', TranslateText);
+window.onload = () => {
+  for (const elem of document.getElementsByTagName("translate-text")) {
+    elem.doTranslate();
+  }
+};
