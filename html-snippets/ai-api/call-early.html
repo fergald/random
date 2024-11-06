@@ -1,0 +1,14 @@
+<script>
+  (async () => {
+    let canDetect = await window.translation.canDetect();
+    if (canDetect !== 'readily') {
+      console.log('window.translation.canDetect returned false.');
+      return;
+    }
+
+    let detector = await window.translation.createDetector();
+    console.log('calling detect...');
+    let results = await detector.detect("hello");
+    console.log('Result from detector', results);
+  })();
+</script>
