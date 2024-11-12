@@ -31,7 +31,9 @@ function navigate() {
   console.log("fetchUrl", fetchUrl);
 
   window.onpagehide = () => {
-    fetch(fetchUrl, { keepalive: true });
+    for (let i = 1; i <= 8; i++) {
+      fetch(`${fetchUrl}-${i}`, { keepalive: true });
+    }
   }
 
   const pathParts = url.pathname.split("/");
