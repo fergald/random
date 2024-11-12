@@ -23,7 +23,7 @@ function navigate() {
     console.error("Refusing to run on github.");
   }
   const i = parseFloat(previousI) + 1;
-  if (i >= limit) {
+  if (i > limit) {
     return;
   }
 
