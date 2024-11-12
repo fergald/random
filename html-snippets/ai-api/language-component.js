@@ -29,8 +29,8 @@ class TranslateText extends HTMLElement {
 
     let detector = await window.translation.createDetector();
     console.log(detector);
-    console.log('calling detect on ', this.innerText);
-    let results = await detector.detect(this.innerText);
+    //    console.log('calling detect on ', this.innerText);
+    let results = await detector.detect('');
     console.log('Result from detector', results);
 
     return;
