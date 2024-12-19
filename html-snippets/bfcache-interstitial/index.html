@@ -9,7 +9,7 @@
       (under the hood, push a new URL with a fragment).</li>
     <li>Click button again to "dismiss" interstitial
       and navigate to the destination
-      (under the hood, go back and then navigate to the destination).</li>
+      (under the hood, `history.back` and then navigate to the destination).</li>
     <li>Click back to get back to the original page from BFCache
       with no interstitial visible</li>
   </ol>
@@ -20,6 +20,13 @@
     This looks like a bug
     because long-press on the back button shows the original page
     as the previous history entry.
+    When we go back to it,
+    the `history.back()` called before navigating seems to kick in.
+    I would expect that *either* that `back()` would have no effect at all
+    (the long-press would show the interstitial and the interstitial would still be )
+    or the effect would precede to the navigation.
+    Instead we end up with an inconsistency
+    between the renderer and the browser.
   </p>
 </div>
 <button id="goButton">show interstitial</button>

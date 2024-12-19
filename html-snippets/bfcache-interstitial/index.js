@@ -33,7 +33,8 @@ function onDismissInterstitialClicked() {
 }
 
 window.onpageshow = (event) => {
-  log(`pageshow: persisted: ${event.persisted}`);
+  log(`pageshow: event.persisted: ${event.persisted}`);
+  log(`window.goButton.textContent: ${window.goButton.textContent}`);
   if (window.goButton.textContent == kDismissText) {
     window.history.back();
   }
