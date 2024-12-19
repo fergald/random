@@ -43,10 +43,14 @@ window.onpageshow = (event) => {
   if (hash == kInterstitial) {
     log('going back after landing on interstitial');
     if (window.goButton.textContent != kDismissText) {
-      log("Inconsistent state between hash an UI.");
+      log("Inconsistent state between hash and UI.");
     }
     window.history.back();
     goToInitialState();
+  } else {
+    if (window.goButton.textContent == kDismissText) {
+      log("Inconsistent state between hash and UI.");
+    }
   }
 }
 
