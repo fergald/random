@@ -35,8 +35,9 @@ function onDismissInterstitialClicked() {
 window.onpageshow = (event) => {
   log(`pageshow: event.persisted: ${event.persisted}`);
   log(`window.goButton.textContent: ${window.goButton.textContent}`);
+  const hash = window.location.hash;
+  log(`window.location.hash: ${hash}`);
 
-  log(`window.location.hash: ${window.location.hash}`);
   // If we somehow get back to the page with the interstitial showing, remove
   // it.
   if (hash == kInterstitial) {
