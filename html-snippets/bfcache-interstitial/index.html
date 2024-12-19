@@ -1,7 +1,5 @@
 <div>
-  <p>Trying to make BFCache and interstitials work.
-    Currently (131.0.6778.139),
-    this seems to demonstrate a bug in navigation.</p>
+  <p>Trying to make BFCache and interstitials work.</p>
 
   <p>What's supposed to happen is
   <ol>
@@ -13,21 +11,6 @@
     <li>Click back to get back to the original page from BFCache
       with no interstitial visible</li>
   </ol>
-  </p>
-  <p>What's actually happening is that most times,
-    going back goes back twice
-    (to the NTP or whatever page you were on before you came to this demo).
-    This looks like a bug
-    because long-press on the back button shows the original page
-    as the previous history entry.
-    When we go back to it,
-    the `history.back()` called before navigating seems to kick in.
-    I would expect that *either* that `back()` would have no effect at all
-    (the long-press would show the interstitial and the interstitial would still be )
-    or the effect would precede to the navigation.
-    Instead we end up with an inconsistency
-    between the renderer and the browser.
-  </p>
 </div>
 <button id="goButton">show interstitial</button>
 <pre id="logPre"></pre>
