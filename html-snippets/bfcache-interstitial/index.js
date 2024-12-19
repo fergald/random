@@ -35,13 +35,22 @@ function onDismissInterstitialClicked() {
 window.onpageshow = (event) => {
   log(`pageshow: event.persisted: ${event.persisted}`);
   log(`window.goButton.textContent: ${window.goButton.textContent}`);
-  if (window.goButton.textContent == kDismissText) {
+
+  log(`window.location.hash: ${window.location.hash}`);
+  // If we somehow get back to the page with the interstitial showing, remove
+  // it.
+  if (hash == kInterstitial) {
+    log('going back after landing on interstitial');
+    if (window.goButton.textContent != kDismissText) {
+      log("Inconsistent state between hash an UI.");
+    }
     window.history.back();
+    goToInitialState();
   }
-  goToInitialState();
 }
 
 window.onhashchange = (event) => {
+  log(`hashchange newURL: ${event.newURL}`);
   if (new URL(event.newURL).hash != kInterstitial) {
     goToInitialState();
   }
