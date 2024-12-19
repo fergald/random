@@ -1,5 +1,6 @@
 const kShowText = "show interstitial";
 const kDismissText = "interstitial is showing. Dismiss it";
+const kInterstitial = "interstitial";
 
 goToInitialState();
 
@@ -18,7 +19,7 @@ function goToInitialState() {
 function onShowInterstitialClicked() {
   log("OnShowInterstitialClicked");
   const newUrl = new URL(window.location.toString());
-  newUrl.hash = "interstitial";
+  newUrl.hash = kInterstitial;
   window.history.pushState({}, null, newUrl.toString())
   window.goButton.textContent = kDismissText;
   window.goButton.onclick = onDismissInterstitialClicked;
@@ -37,4 +38,10 @@ window.onpageshow = (event) => {
     window.history.back();
   }
   goToInitialState();
+}
+
+window.onhashchange = (event) => {
+  if (new URL(event.newURL).hash != kInterstitial) {
+    goToInitialState();
+  }
 }
