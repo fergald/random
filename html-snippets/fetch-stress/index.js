@@ -50,7 +50,12 @@ function navigate() {
   url.hash = i;
   const navigateUrl = url.toString();
   console.log("navigateUrl", navigateUrl);
-  window.location = navigateUrl;
+  const w = window;
+  setTimeout(() => {
+    // window.location = navigateUrl
+    w.open(navigateUrl);
+    w.close();
+  }, 0);
 }
 
 window.onload = navigate;
