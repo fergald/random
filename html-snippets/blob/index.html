@@ -2,4 +2,8 @@
 <p>A blob URL is created in the iframe and repeated fetched and logged in the
   console. When the iframe is removed, the URL is revoked and the fetch begins to
   fail.</p>
-<iframe id=bf src=frame.html></iframe>
+<iframe id="bf" src=frame.html></iframe>
+<div>
+  <button id="removeButton" disabled>Remove iframe</button>
+</div>
+<pre id="logPre"></pre>

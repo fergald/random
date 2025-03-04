@@ -2,15 +2,17 @@ window.addEventListener("message", m => {
   console.log("message", m);
   let url = bf.contentWindow.url;
   console.log("url", url);
-  const button = document.createElement("button");
-  document.body.appendChild(button);
-  button.textContent = "Remove iframe";
-  button.onclick = () => {
+
+  removeButton.disabled = false;
+  removeButton.onclick = () => {
     document.body.removeChild(bf);
     document.body.removeChild(button);
   };
 
   setInterval(() => {
-    fetch(url).then(r => r.text()).then(console.log)
+    fetch(url).then(r => r.text()).then(t => {
+      console.log(t);
+      logPre.textContent += t + "\n";
+    }).catch(() => logPre.textContent += "fail\n");
   }, 1000);
 });
