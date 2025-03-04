@@ -12,16 +12,20 @@ function setStatus(status) {
 }
 
 async function init() {
-  if (!window.translation) {
-    setStatus("No window.translation");
+  if (!window.ai) {
+    setStatus("No window.ai");
     return;
   }
 
-  const can = await translation.canDetect();
-  setStatus(`canDetect returned: ${can}`);
+  if (!window.ai.languageDetector) {
+    setStatus("No window.ai.languageDetector");
+    return;
+  }
 
-  able(goButton, can != "no");
-  able(hamletButton, can != "no");
+  setStatus("window.ai.languageDetector available");
+
+  able(goButton, true);
+  able(hamletButton, true);
 };
 
 init();
@@ -33,11 +37,11 @@ function el(name, textContent) {
 }
 
 async function detect(input) {
-  const detector = await translation.createDetector();
+  const detector = await window.ai.languageDetector.create();
   input = input.trim();
   console.log(`Input: ${input}`);
   const startMs = Date.now();
-  const output = await detector.detect(input, false);
+  const output = await detector.detect(input);
   const endMs = Date.now();
   const durationMs = endMs - startMs;
   const charsPerMs = input.length / durationMs;
