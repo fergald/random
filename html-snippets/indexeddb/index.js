@@ -32,7 +32,7 @@ function createTransaction(db) {
 }
 
 function getAndLog(store, key) {
-    const r = store.get(key);
+  const r = store.get(key);
   r.onsuccess = (e) => {
     info(`value of ${key} is ${r.result}`);
   }
@@ -44,19 +44,22 @@ DBOpenRequest.onsuccess = async (event) => {
   const t_store1 = createTransaction(db);
   const t_store2 = createTransaction(db);
   const kKey = "key";
-  const r1 = t_store1.put(1, kKey);
+  let i = 1;
+  const r1 = t_store1.put(i, kKey);
   const r2 = t_store2.put(-1, kKey);
   const p1 = new Promise((r) => {
-    r1.onsuccess = () => {
+    const iterate = () => {
       info("t1 success");
       getAndLog(t_store1, kKey);
-      const r1_2 = t_store1.put(3, kKey);
-      r1_2.onsuccess = () => {
-        info("t1_2 success");
-        getAndLog(t_store1, kKey);
+      if (i == 100) {
         r();
+        return;
       }
-    };
+      i++;
+      const r1_next = t_store1.put(i, kKey);
+      r1_next.onsuccess = iterate;
+    }
+    r1.onsuccess = iterate;
   });
   const p2 = new Promise((r) => {
     r2.onsuccess = () => {
