@@ -14,16 +14,26 @@ function info(message) {
 }
 
 const kStore = "store";
+function openDb() {
 
-const DBOpenRequest = window.indexedDB.open(kStore, 2);
-DBOpenRequest.onerror = (event) => {
-  error(`Error loading database.${event.error}`);
-};
+  return new Promise((resolve, reject) => {
+    const DBOpenRequest = window.indexedDB.open(kStore, 2);
+    DBOpenRequest.onerror = (event) => {
+      error(`Error loading database.${event.error}`);
+      reject(event.error);
+    };
 
 
-DBOpenRequest.onupgradeneeded = () => {
-  DBOpenRequest.result.createObjectStore(kStore);
-};
+    DBOpenRequest.onupgradeneeded = () => {
+      DBOpenRequest.result.createObjectStore(kStore);
+    };
+
+    DBOpenRequest.onsuccess = event => {
+      info("Database opened");
+      resolve(DBOpenRequest.result);
+    };
+  });
+}
 
 function createTransaction(db) {
   const transaction = db.transaction([kStore], 'readwrite');
@@ -61,9 +71,7 @@ function dumpDB(store) {
   };
 }
 
-DBOpenRequest.onsuccess = async (event) => {
-  info("Database opened");
-  const db = DBOpenRequest.result;
+openDb().then(async (db) => {
   const [t_store1, txn1] = createTransaction(db);
   const [t_store2, txn2] = createTransaction(db);
   const r1 = t_store1.put({ v: 1 }, key(1));
@@ -99,4 +107,4 @@ DBOpenRequest.onsuccess = async (event) => {
     getAndLog(t_store3, key(1));
   }
   const [t_store3, txn3] = createTransaction(db);
-}
+});
