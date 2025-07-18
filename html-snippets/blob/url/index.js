@@ -30,6 +30,15 @@ function addBlobUrl(blob) {
         console.error("Error fetching Blob:", error)
       })
   };
+  {
+    const revokeButton = document.createElement("button");
+    newBlobDiv.appendChild(revokeButton);
+    revokeButton.textContent = "Revoke";
+    revokeButton.onclick = () => {
+      URL.revokeObjectURL(blobUrl);
+      console.log("revoked", blobUrl);
+    };
+  }
   const blobSpan = document.createElement("span");
   newBlobDiv.appendChild(blobSpan);
   blobSpan.textContent = `File selected: ${blob.name || "Default Blob"}, size: ${blob.size / (1024 * 1024)} MB`;
