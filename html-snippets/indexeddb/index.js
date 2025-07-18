@@ -27,36 +27,60 @@ DBOpenRequest.onupgradeneeded = () => {
 
 function createTransaction(db) {
   const transaction = db.transaction([kStore], 'readwrite');
-  return transaction.objectStore(kStore);
+  return [transaction.objectStore(kStore), transaction];
 
 }
 
 function getAndLog(store, key) {
   const r = store.get(key);
   r.onsuccess = (e) => {
-    info(`value of ${key} is ${r.result}`);
+    info(`key ${key} result ${r.result}`);
+    if (r.result) {
+      info(`value of ${key} is ${r.result['v']}`);
+    }
   }
-
 }
+
+const kKey = "key";
+function key(i) {
+  return `${kKey}_${i}`;
+}
+
+function dumpDB(store) {
+  const c = store.openCursor();
+  c.onsuccess = (event) => {
+    const cursor = event.target.result;
+    info(`cursor ${cursor}`);
+    if (cursor) {
+      info(`cursor value ${cursor.value['v']} ${cursor.key}`);
+      cursor.continue();
+    }
+  };
+  c.onerror = (event) => {
+    error(`cursor: ${event.message}`);
+  };
+}
+
 DBOpenRequest.onsuccess = async (event) => {
   info("Database opened");
   const db = DBOpenRequest.result;
-  const t_store1 = createTransaction(db);
-  const t_store2 = createTransaction(db);
-  const kKey = "key";
-  let i = 1;
-  const r1 = t_store1.put(i, kKey);
-  const r2 = t_store2.put(-1, kKey);
+  const [t_store1, txn1] = createTransaction(db);
+  const [t_store2, txn2] = createTransaction(db);
+  const r1 = t_store1.put({ v: 1 }, key(1));
+  const r2 = t_store2.put({ v: -1 }, key(1));
   const p1 = new Promise((r) => {
+    let i = 10;
     const iterate = () => {
-      info("t1 success");
-      getAndLog(t_store1, kKey);
-      if (i == 100) {
+      info(`t1 success ${key(i)}`);
+      getAndLog(t_store1, key(i));
+      if (i == 30) {
         r();
+        setTimeout(() => dumpDB(t_store1),
+          2 * 1000);
         return;
       }
       i++;
-      const r1_next = t_store1.put(i, kKey);
+      const r1_next = t_store1.put({ v: i }, key(i));
       r1_next.onsuccess = iterate;
     }
     r1.onsuccess = iterate;
@@ -64,12 +88,15 @@ DBOpenRequest.onsuccess = async (event) => {
   const p2 = new Promise((r) => {
     r2.onsuccess = () => {
       info("t2 success");
-      getAndLog(t_store2, kKey);
+      getAndLog(t_store2, key(1));
       r();
     };
   });
   await p1;
   await p2;
-  const t_store3 = createTransaction(db);
-  getAndLog(t_store3, kKey);
+  {
+    const [t_store3, txn3] = createTransaction(db);
+    getAndLog(t_store3, key(1));
+  }
+  const [t_store3, txn3] = createTransaction(db);
 }
