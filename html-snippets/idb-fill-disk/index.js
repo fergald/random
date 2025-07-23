@@ -90,8 +90,7 @@ function useAllSpace() {
       if (writeCount % 100 === 0) {
         console.log(`Write #${writeCount} successful.`);
       }
-      // Schedule the next write. Using requestAnimationFrame is efficient.
-      requestAnimationFrame(performWrite);
+      setTimeout(performWrite, 0);
     };
 
     // Explicitly commit the transaction (non-standard, but supported in Chrome)
