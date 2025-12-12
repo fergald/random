@@ -40,7 +40,7 @@ makeUI(fetchParallel, "parallel");
 
 async function fetchInChunks(
   url,
-  chunkSize = 5 * 1024 * 1024,
+  chunkSize = 500 * 1024 * 1024,
   maxParallelRequests = 6,
   progressCallback = null,
   signal = null

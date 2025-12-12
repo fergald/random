@@ -1,0 +1,13 @@
+<script src="fbevents.js"></script>
+<p>
+  The frame and the subframe both load fbevents.js. This is a copy of
+  the real fbevents.js but all wrapped in a function to prevent any
+  code execution at load time. This allows us to see the pure
+  load/compile overhead.
+</p>
+<iframe src=frame.html></iframe>
+<p>
+  What we see is 6-8ms compile paid twice for this 300k script.
+</p>
+    
+<img src=trace.png>
