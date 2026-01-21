@@ -1,0 +1,23 @@
+This page lets you play around with various attempts at causing a file-chooser
+to race with navigating or opening a new tab.
+
+With Chrome, most of these are blocked. The only one that does something odd
+is if you cause navigation in the same tab to happen after the dialog is opened.
+The dialog stays open.
+It's not a security bug since the page is not BFCache,
+so the result of picking a file cannot be seen by the JS.
+
+<form>
+  <input type="file" id="fileInput">
+</form>
+<button id="tabThenDialogButton">Open a new tab and click the file dialog</button>
+<br>
+<button id="dialogThenTabButton">Click the file dialog and open a new tab</button>
+<br>
+<button id="delayedDialogButton">Click the file dialog after delay</button>
+<br>
+<button id="delayedTabButton">Open a new tab after delay</button>
+<br>
+<button id="delayedNavigateButton">Navigate away after delay</button>
+<div id=bfcacheLogDiv></div>
+<script src=index.js></script>
