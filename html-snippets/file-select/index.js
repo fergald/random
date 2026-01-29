@@ -23,23 +23,22 @@ tabThenDialogButton.onclick = () => {
 };
 
 delayedDialogButton.onclick = () => {
-    setTimeout(() => {
-      fileInput.click();
-    },
-      2000);
+  setTimeout(() => {
+    fileInput.click();
+  },
+    2000);
 }
 
 delayedTabButton.onclick = () => {
-    setTimeout(() => {
-      openGoogleTab();
-    },
-      2000);
+  setTimeout(() => {
+    openGoogleTab();
+  },
+    2000);
 }
 
 delayedNavigateButton.onclick = () => {
-    setTimeout(() => {
-      navigateGoogle();
-    },
-      2000);
+  setTimeout(() => {
+    navigateGoogle();
+  },
+    2000);
 }
-
