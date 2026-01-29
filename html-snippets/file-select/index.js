@@ -42,3 +42,7 @@ delayedNavigateButton.onclick = () => {
   },
     2000);
 }
+
+popupButton.onclick = () => {
+  window.open("popup.html", "", "popup, width = 10, height = 10")
+}
