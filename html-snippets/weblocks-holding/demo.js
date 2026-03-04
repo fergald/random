@@ -17,9 +17,7 @@ if (!isPage2) {
         return p;
     });
 
-    // The TRAP: When we leave, we block the thread.
-    // This prevents the browser from fully terminating the context
-    // before Page 2 starts requesting the lock.
+    /// Block for a while then release the lock.
     window.addEventListener('pagehide', () => {
         const start = Date.now();
         while (Date.now() - start < 1500) { /* Sync Block 1.5s */ }
