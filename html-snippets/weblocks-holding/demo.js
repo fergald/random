@@ -6,15 +6,14 @@ if (!isPage2) {
     // --- PAGE 1 LOGIC ---
     document.getElementById('title').innerText = "Page 1: Holding Lock";
 
+    // Hold's the promise's `resolve`. Calling this will release the lock.
     let resolve;
-
     const p = new Promise(r => { resolve = r});
 
     navigator.locks.request(lockName, async (lock) => {
         document.getElementById('status').innerText = "Lock acquired. Click the button to navigate.";
         document.getElementById('nav-btn').style.display = "block";
 
-        // HOLD THE LOCK FOREVER
         return p;
     });
 
