@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>Web Lock Same-Tab Race PoC</title></head>
+<body>
+    <p>
+      Demonstrate the problem of not releasing locks on destruction.
+    </p>
+    <h2 id="title">Initializing...</h2>
+    <div id="status">Checking lock...</div>
+    <button id="nav-btn" style="display:none;" onclick="navigate()">Navigate to New Page</button>
+
+    <script src="repro.js"></script>
+</body>
+</html>
