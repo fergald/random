@@ -1,4 +1,7 @@
-<p>document.featurePolicy.allowsFeature('unload') = <span id=value></span></p>
+<p>If this says `true` then unload handers are permitted.
+
+<p>document.featurePolicy.allowsFeature('unload') == <span id=value></span></p>
+
 <script>
   value.textContent = document.featurePolicy.allowsFeature('unload');
 </script>
