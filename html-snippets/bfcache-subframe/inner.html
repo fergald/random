@@ -1,0 +1,7 @@
+<a href=https://www.example.com>navigate</a>
+<div id=logDiv></div>
+<script>
+  addEventListener("pageshow", e => {
+      logDiv.textContent = `bfcached=${e.persisted} ${new Date()}`;
+  });
+</script>
