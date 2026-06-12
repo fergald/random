@@ -1,0 +1,19 @@
+<style>
+  .elem {
+    position: fixed;
+    font-size: 10rem;
+    opacity: 0.85;
+    border-width: 1px;
+    border-style: solid;
+    border-image: initial;
+    padding: 0.4rem 0.75rem;
+    border-radius: 14px;
+    transition: opacity 0.15s, background 0.15s;
+    animation: 4s ease-in-out 0s infinite normal none running glow;
+  }
+  @keyframes glow {
+  0%, 70%, 100% { box-shadow: none; }
+  80% { box-shadow: 0 0 8px }
+  90% { box-shadow: 0 0 }
+</style>
+<div class="elem">text</div>
